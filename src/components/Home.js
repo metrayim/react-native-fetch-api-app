@@ -37,7 +37,7 @@ import {fetchArticle,searchArticle} from '../action/action'
        
         
         return (
-            <ScrollView>
+            <ScrollView  showsVerticalScrollIndicator={false}>
             <View style={styles.container}>
                 <View>
                     <SearchBar

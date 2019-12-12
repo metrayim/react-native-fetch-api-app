@@ -46,7 +46,7 @@ class DataComponent extends Component {
     render() {
         console.log(this.props.navigation, 'metra navigat')
         const {loading}=this.state;
-        if (!loading) {
+        if (!this.props.isLoading) {
             return <Dataloading />
         }
         else {
@@ -57,7 +57,7 @@ class DataComponent extends Component {
                         keyExtractor={item => item.ID}
                         renderItem={({ item }) => (
 
-                            <ScrollView>
+                            <View>
                                 <TouchableOpacity onPress={() => this.viewId(item.ID)} onLongPress={() => this.deleteAritcles(item.ID)} style={styles.container}>
                                     <View>
                                         <Image source={{ uri: item.IMAGE ? item.IMAGE : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/220px-Good_Food_Display_-_NCI_Visuals_Online.jpg' }} style={styles.styleImage} />
@@ -71,7 +71,7 @@ class DataComponent extends Component {
                                     </View>
                                 </TouchableOpacity>
                                 <Divider style={{ backgroundColor: 'white', height: 10 }} />
-                            </ScrollView>
+                            </View>
                         )}
                     />
 
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     }
 })
 const mapStateToProps = (centralState) => {
-    console.log('Datacmp:', centralState.reducerApi.isLoading)
+    console.log('loding:', centralState.reducerApi.isLoading);
     return {
         article: centralState.reducerApi.article,
         isLoading:centralState.reducerApi.isLoading
